@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package array
 
 //func main() {
 //	list := []int{1, 2, 3, 4, 5, 7, 9}
@@ -22,12 +20,6 @@ import "fmt"
 //	fmt.Println("count", count)
 //}
 
-func main() {
-	nums := []int{1, 2, 3, 4, 5}
-	k := 5
-	res := subarraySum(nums, k)
-	fmt.Println(res)
-}
 func subarraySum(nums []int, k int) int {
 	// 使用前缀和优化
 	pre, count := 0, 0

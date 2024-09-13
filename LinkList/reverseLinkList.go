@@ -1,15 +1,8 @@
-package main
-
-import "fmt"
+package linklist
 
 type ListNode struct {
 	Val int
 	Next *ListNode
-}
-
-func main(){
-	input := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
-	fmt.Println(reverseList(input))
 }
 
 func reverseList(head *ListNode) *ListNode {
