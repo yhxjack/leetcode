@@ -24,12 +24,12 @@ func detectCycleByMap(head *ListNode) *ListNode {
 	return nil
 }
 
-func detectCycleByPoint(head *ListNode) *ListNode {
+func detectCycleByPoint1(head *ListNode) *ListNode {
 	// 使用快慢指针
 	if head == nil {
 		return nil
 	}
-fast, slow := head, head
+	fast, slow := head, head
 	for fast != nil {
 		slow = slow.Next
 		// 若无环则返回nil
