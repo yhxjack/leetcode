@@ -50,3 +50,39 @@ func spiralOrder(matrix [][]int) []int {
 
 	return order
 }
+
+// 下一种做法，按照层级遍历，空间复杂度比第一种优异
+func spiralOrderByLayer(matrix [][]int) []int {
+	res := []int{}
+	rows, cols := len(matrix), len(matrix[0])
+	if rows == 0 || cols == 0 {
+		return res
+	}
+	top, bottom, left, right := 0, rows-1, 0, cols-1
+	for top <= bottom && left <= right {
+		// 层级遍历上右下左
+		// 上部遍历时，top是固定的，需要变化列值来获取当前的数值
+		for i := left; i <= right; i++ {
+			res = append(res, matrix[top][i])
+		}
+		// 第一行遍历完成后，需要top增加1，往第二层做遍历，需要最后与bottom比较，是终止条件的判断参数
+		top++
+		for i := top; i <= bottom; i++ {
+			res = append(res, matrix[i][right])
+		}
+		right--
+		// 此处更新了top和right，需要判断是否终止
+		if top > bottom || left > right {
+			return res
+		}
+		for i := right; i >= left; i-- {
+			res = append(res, matrix[bottom][i])
+		}
+		bottom--
+		for i := bottom; i >= top; i-- {
+			res = append(res, matrix[i][left])
+		}
+		left++
+	}
+	return res
+}

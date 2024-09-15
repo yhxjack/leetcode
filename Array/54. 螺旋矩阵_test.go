@@ -23,5 +23,14 @@ func TestSpiralOrder(t *testing.T) {
 				t.Fatalf("failed, result:%v is not equal expect:%v", result, c.expect)
 			}
 		}
+		resultBylayer := spiralOrderByLayer(c.input)
+		if len(resultBylayer) != len(c.expect) {
+			t.Fatalf("error, result is not expect, input:%v, result:%v, expect:%v", c.input, resultBylayer, c.expect)
+		}
+		for i, v := range resultBylayer {
+			if v != c.expect[i] {
+				t.Fatalf("failed, result:%v is not equal expect:%v", resultBylayer, c.expect)
+			}
+		}
 	}
 }
